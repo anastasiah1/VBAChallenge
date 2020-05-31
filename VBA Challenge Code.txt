@@ -1,0 +1,67 @@
+'1. Loop over all Tickers (all rows)
+'2. check current Ticker, with Ticker Name in next row, if change , popup (msgbox)
+'3. Yearly change from opening price at the beginning of a given year to the closing price at the end of that year.
+'3. % Change from opening price at the beginning of given year to closing price at end of year
+'4. Total stock volume of stockkeep a runningTotal for every ticker initialize to 0
+'5. add amountCharged to runningTotal at every row
+'6. If there is change in Ticker, copy Ticker and runningTotal to target area
+'7 . Counter for targetRow (start at 2 and increment by every time you write a Ticker to target)
+
+
+Sub Alphabetical_Test()
+
+Dim row As Integer, lastRow As Integer, targetRow As Integer
+Dim Ticker As Integer
+Dim Stock_Open As Double
+Dim Stock_Close As Double
+Dim Yearly_Change As Double
+Dim Percent_Change As Double
+
+lastRow = Cells(1, 1).End(xlDown).row
+For i = 2 To lastRow
+lastRow = Cells(1, 1).End(xlDown).row
+
+If Cells(row, 1).Value <> Cells(row + 1, 1).Value Then
+
+Totalvolume = Totalvolume + ws.Cells(row, 7).Value
+
+If Totalvolume = 0 Then
+
+  
+'Stock Open & Close price
+Stock_Open = ws.Range("C" & i).Value
+Stock_Close = ws.Range("F" & i).Value
+
+'Yearly_Change
+Yearly_Change = (Stock_Open - Stock_Close)
+
+    
+'Annual Percentage Change
+If Open_Stock <> 0 Then
+    Percentage_Change = (Total_Change / Stock_Open)
+Else
+    Percentage_Change = 0
+End If
+    ws.Range("K" & CountTicker).Value = Percentage_Change
+
+Totalvolume = 0
+target row = 2
+    targetRow = target row + 1
+   
+    
+Totalvolume = Totalvolume + ws.Cells(row, 7).Value
+        
+            
+ws.Range("L" & targetRow).Value = Totalvolume
+            targetRow = targetRow + 1
+            Yearly_Change = 0
+        End If
+    Next row
+
+TotalStock_Volume = Stock Volume + Cells(lastRow, 3).Value
+    Range("G" & targetRow).Value = Cells(lastRow, 1).Value
+            
+    Range("H" & targetRow).Value = Total Stock Volume
+    
+End Sub
+
